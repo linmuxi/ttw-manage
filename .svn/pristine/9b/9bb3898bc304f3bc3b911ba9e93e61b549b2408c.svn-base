@@ -1,0 +1,26 @@
+########################JDBC########################
+#oracle
+#oracle_driver=oracle.jdbc.driver.OracleDriver
+#oracle_url=jdbc:oracle:thin:@10.10.15.29:1521:comtop
+#oracle_username=edmp
+#oracle_password=edmp
+#oracle_maxActive=500
+#oracle_maxIdle=10
+#oracle_maxWait=10
+
+#mysql
+mysql_driver=com.mysql.jdbc.Driver
+mysql_url=jdbc:mysql://120.25.235.22:3306/ttw?useUnicode=true&characterEncoding=UTF-8
+mysql_username=root
+mysql_password=Taotao123
+mysql_maxActive=500
+mysql_maxIdle=10
+mysql_maxWait=10
+
+########################EHCACHE########################
+ehCacheFilePath=com/phly/common/resource/ehcache.xml
+
+
+
+#########################ws#######################
+supplier.ws.address = http://localhost:8080/ttw/webservice/SupplierWS?wsdl

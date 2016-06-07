@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<select id="queryMemberList" parameterType="com.phly.ttw.manage.finance.member.model.MemberVO"
+		resultType="com.phly.ttw.manage.finance.member.model.MemberVO">
+		SELECT
+			t1.id id,
+			t2.NAME name,
+			t2.ACCOUNT account,
+			t1.birth birth,
+			t1.gender gender,
+			t1.mobile mobile,
+			t1.email email,
+			t1.zip_code zipCode,
+			t1.area area,
+			t1.address address,
+			t1.CREATE_DATE createDate,
+			t1.CREATOR creator,
+			t1.LAST_UPDATE_DATE updateTime,
+			t1.LAST_UPDATER updater 
+		FROM t_member t1 LEFT JOIN sys_users_t t2 ON t1.user_id = t2.USER_ID
+		<include refid="sqlCondition"></include>
+		<if test="sortFieldName != null and sortFieldName != '' and sortType != null and sortType != ''">
+			ORDER BY ${sortFieldName} ${sortType}
+		</if>
+	</select>
+
+	<select id="getMemberCount" parameterType="com.phly.ttw.manage.finance.member.model.MemberVO"
+		resultType="int">
+		SELECT count(1) FROM t_member t1 LEFT JOIN sys_users_t t2 ON t1.user_id = t2.USER_ID
+		<include refid="sqlCondition"></include>
+	</select>
+	
+	<sql id="sqlCondition">
+		<where> 1 = 1
+			<if test="searchList != null and searchList.length > 0">
+				and 
+				<if test="searchRegex == true">
+					<foreach collection="searchList" open="(" close=")" separator="or" item="key">
+						t2.name like CONCAT('%',#{key},'%') or t2.account like CONCAT('%',#{key},'%')
+					</foreach>
+				</if>
+				<if test="searchRegex == false">
+					<foreach collection="searchList" open="(" close=")" separator="or" item="key">
+						t2.name = #{key} or t2.account = #{key}
+					</foreach>
+				</if>
+			</if>
+		</where>
+	</sql>
+</mapper>

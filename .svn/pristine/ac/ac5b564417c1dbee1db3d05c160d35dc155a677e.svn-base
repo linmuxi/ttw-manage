@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description></description>
+	<display-name></display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>menu</short-name>
+	<uri></uri>
+	<tag>
+		<description> 生成后台管理菜单 </description>
+		<name>markMenu</name>
+		<tag-class>com.phly.common.base.tag.DefaultMenuTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>菜单数据集合</description>
+			<name>moduleList</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>是否显示首页菜单</description>
+			<name>showDashboard</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>首页菜单标题</description>
+			<name>dashboardTitle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>首页菜单连接地址</description>
+			<name>dashboardUri</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>生成菜单类型,left:树形菜单</description>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
